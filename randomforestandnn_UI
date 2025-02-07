@@ -1,0 +1,65 @@
+!pip install gradio
+!pip install langchain_community
+
+
+import pickle
+import numpy as np
+import torch
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from torch import nn
+
+# Load models and label encoders
+MODEL_PATH_RF = "/content/random_forest_model (2).pkl"
+MODEL_PATH_NN = "/content/neural_network_model (1).pkl"
+ENCODER_PATH = "/content/label_encoders.pkl"
+DATA_PATH = "/content/preprocessed_mental_health (1).csv"
+
+data = pd.read_csv(DATA_PATH)
+all_symptoms = list(data.columns[:-1])  # Assuming last column is the target
+
+with open(MODEL_PATH_RF, 'rb') as f:
+    random_forest_model = pickle.load(f)
+
+with open(MODEL_PATH_NN, 'rb') as f:
+    neural_network_model = pickle.load(f)
+
+torch_model = isinstance(neural_network_model, nn.Module)
+
+with open(ENCODER_PATH, 'rb') as f:
+    label_encoders = pickle.load(f)
+
+def preprocess_input(symptoms):
+    symptoms_list = [s.strip().lower() for s in symptoms.split(',')]
+    input_vector = np.zeros(len(all_symptoms))
+
+    for i, symptom in enumerate(all_symptoms):
+        if symptom.lower() in symptoms_list:
+            input_vector[i] = 1  # Mark symptom as present
+
+    return input_vector.reshape(1, -1)
+
+def predict_mental_health(symptoms, model_choice):
+    try:
+        processed_input = preprocess_input(symptoms)
+
+        if model_choice == "Random Forest":
+            prediction = random_forest_model.predict(processed_input)[0]
+        else:
+            input_tensor = torch.tensor(processed_input, dtype=torch.float32)
+            with torch.no_grad():
+                prediction = neural_network_model(input_tensor).argmax().item()
+
+        predicted_condition = label_encoders['conditions'].inverse_transform([prediction])[0]
+
+        coping_mechanisms = {
+            "Anxiety": "Practice mindfulness, deep breathing, and regular exercise.",
+            "Depression": "Stay connected with loved ones, maintain a routine, and seek therapy if needed.",
+            "Stress": "Engage in hobbies, take breaks, and manage time effectively."
+        }
+
+        coping_strategy = coping_mechanisms.get(predicted_condition, "Consider consulting a mental health professional.")
+
+        return predicted_condition, coping_strategy
+    except Exception as e:
+        return "Error in processing input: " + str(e), ""
