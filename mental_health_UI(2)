@@ -1,0 +1,61 @@
+import gradio as gr
+import os
+from langchain.llms import HuggingFaceHub
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
+
+# Set Hugging Face API Token
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = "my token"  # Replace with your actual token
+
+# Load Hugging Face Model for Mental Health Prediction
+repo_id_mental_health = "GRMenon/mental-health-mistral-7b-instructv0.2-finetuned-V2"
+repo_id_chatbot = "microsoft/DialoGPT-medium"
+
+try:
+    llm_mental_health = HuggingFaceHub(repo_id=repo_id_mental_health, model_kwargs={'temperature': 0.5, 'max_length': 256})
+    llm_chatbot = HuggingFaceHub(repo_id=repo_id_chatbot, model_kwargs={'temperature': 0.7, 'max_length': 256})
+    prompt_mental_health = PromptTemplate.from_template("Given the symptoms: {symptoms}, predict the possible mental health condition.")
+    prompt_chatbot = PromptTemplate.from_template("{question}")
+    llm_chain_mental_health = LLMChain(prompt=prompt_mental_health, llm=llm_mental_health)
+    llm_chain_chatbot = LLMChain(prompt=prompt_chatbot, llm=llm_chatbot)
+except Exception as e:
+    llm_chain_mental_health = None
+    llm_chain_chatbot = None
+    print(f"Error loading models: {e}")
+
+def predict_mental_health(symptoms, model_choice):
+    if llm_chain_mental_health:
+        try:
+            prediction = llm_chain_mental_health.run(symptoms)
+            return prediction, "If needed, seek professional help."
+        except Exception as e:
+            return f"Error in processing: {e}", ""
+    return "Model not available.", ""
+
+def chat_response(user_input):
+    if llm_chain_chatbot:
+        try:
+            return llm_chain_chatbot.run(user_input)
+        except Exception as e:
+            return f"Chatbot is currently unavailable. Error: {e}"
+    return "Chatbot is not loaded properly. Please check API credentials."
+
+demo = gr.TabbedInterface([
+    gr.Interface(
+        fn=predict_mental_health,
+        inputs=[gr.Textbox(label="Enter Symptoms (comma-separated)"), gr.Radio(["Random Forest", "Neural Network"], label="Select Model")],
+        outputs=[gr.Textbox(label="Prediction"), gr.Textbox(label="Advice")],
+        title="Mental Health Condition Predictor",
+        description="Enter symptoms to predict possible mental health conditions and receive advice."
+    ),
+    gr.Interface(
+        fn=chat_response,
+        inputs=gr.Textbox(placeholder="Ask anything about mental health...", label="Your Message"),
+        outputs=gr.Textbox(label="AI Response"),
+        title="Mental Health Chatbot",
+        description="An AI-powered chatbot to provide empathetic and insightful mental health guidance."
+    )
+])
+
+if __name__ == "__main__":
+    demo.launch()
