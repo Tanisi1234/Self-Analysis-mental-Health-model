@@ -84,11 +84,12 @@ A sample script (`sample_prediction.py`) is provided to test the model.
    ```
 
 ### **Gradio Tabs:**
-- **Tab 0**: Predicts possible mental health conditions using **Random Forest** and **Neural Networks**.
-- ![Prediction Interface](Results/Screenshot 2025-02-07 131918.png)
+- **Tab 0**: Predicts possible mental health conditions using **Random Forest** and **Neural Networks**.  
+  ![Prediction Interface](Results/Screenshot_2025-02-07_131918.png)
 
-- **Tab 1**: **LLM Chatbot** for answering general mental health queries (NOT for diagnosis).
-- ![chatbot Interface](Results/Screenshot 2025-02-07 131949.png)
+- **Tab 1**: **LLM Chatbot** for answering general mental health queries (NOT for diagnosis).  
+  ![Chatbot Interface](Results/Screenshot_2025-02-07_131949.png)
+
 
 
 ---
