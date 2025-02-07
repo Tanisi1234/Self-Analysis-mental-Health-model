@@ -13,7 +13,7 @@ The **Self-Analysis Mental Health Model** is designed to predict possible mental
 
 The model uses **two datasets**:
 1. **mentalhealth_disorder.xlsx** – Used for classification of mental health conditions.
-2. **Survey Dataset** – Used for training and refining the chatbot's responses.
+2. **Survey Dataset** – Used for classification .
 
 ### Steps:
 1. **Data Cleaning**: Removed null values and duplicate entries.
@@ -30,8 +30,19 @@ The **Random Forest** and **Neural Networks** were chosen for their advantages:
 - **Random Forest**: Handles high-dimensional data well and reduces overfitting.
 - **Neural Networks**: Captures complex patterns and relationships in data for better accuracy.
 
-Both models were compared based on **precision, recall, and F1-score**, and their performance was analyzed for mental health classification.
+### Model Comparison
+Both models were evaluated based on the following metrics:
+- **Precision**
+- **Recall**
+- **F1-score**
+- **Accuracy**
+- **ROC-AUC** (for binary or multi-class classification)
 
+### Model Interpretation
+- **SHAP** or **LIME** was used to interpret model predictions.
+
+### Testing the Model
+A sample script (`sample_prediction.py`) is provided to test the model.
 ---
 
 ## Running the Inference Script
@@ -79,7 +90,7 @@ Both models were compared based on **precision, recall, and F1-score**, and thei
 ---
 
 ## LLM Chatbot Integration
-The chatbot is powered by **Mistral 7B**, fine-tuned on **survey-based mental health queries**. It provides general guidance, emotional support, and self-care tips, ensuring responsible AI usage.
+The chatbot is  fine-tuned on **survey-based mental health queries**. It provides general guidance, emotional support, and self-care tips, ensuring responsible AI usage.
 
 **Prompt Engineering** was applied to enhance chatbot responses while avoiding medical claims.
 
