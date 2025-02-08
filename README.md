@@ -98,10 +98,11 @@ The chatbot is  fine-tuned on **survey-based mental health queries**. It provide
 **Prompt Engineering** was applied to enhance chatbot responses while avoiding medical claims.
 
 ---
-
-![Prediction ](Results/Screenshot%202025-02-07%20153653.png)  
-![Chatbot ](Results/Screenshot%202025-02-08%20183825.png)
-
+## RESULTS 
+<div align="center">
+  <img src="Results/Screenshot%202025-02-08%20183825.png" alt="Chatbot Interface">
+  <p><b>Figure 1:</b> Evaluation Metrics</p>
+</div>
 
 
 
