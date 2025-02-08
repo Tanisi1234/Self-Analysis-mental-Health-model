@@ -100,8 +100,9 @@ The chatbot is  fine-tuned on **survey-based mental health queries**. It provide
 ---
 
 # RESULTS 
-![Prediction Interface](Results/Screenshot%2025-02-07%20153653.png)
-![Chatbot Interface](Results/Screenshot%2025-02-08%20183825.png)
+<img src="Results/Screenshot%2025-02-07%20153653.png" alt="Prediction Interface">
+<img src="Results/Screenshot%2025-02-08%20183825.png" alt="Chatbot Interface">
+
 
 
 
