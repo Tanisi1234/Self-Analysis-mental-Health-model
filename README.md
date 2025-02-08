@@ -84,8 +84,16 @@ A sample script (`sample_prediction.py`) is provided to test the model.
    ```
 
 ### **Gradio Tabs:**
-![Prediction Interface](Results/Screenshot%202025-02-07%20131918.png)
-![Chatbot Interface](Results/Screenshot%202025-02-07%20131949.png)
+<div align="left">
+  <img src="Results/Screenshot%202025-02-07%20131918.png" alt="Prediction Interface">
+  <p><b>Figure 1:</b> Prediction Interface</p>
+</div>
+
+<div align="left">
+  <img src="Results/Screenshot%202025-02-07%20131949.png" alt="Chatbot Interface">
+  <p><b>Figure 2:</b> Chatbot Interface</p>
+</div>
+
 
 
 
@@ -99,10 +107,10 @@ The chatbot is  fine-tuned on **survey-based mental health queries**. It provide
 
 ---
 ## RESULTS 
-<div align="center">
+
   <img src="Results/Screenshot%202025-02-08%20183825.png" alt="Chatbot Interface">
   <p><b>Figure 1:</b> Evaluation Metrics</p>
-</div>
+
 
 
 
