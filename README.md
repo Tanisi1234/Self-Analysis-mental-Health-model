@@ -108,11 +108,23 @@ The chatbot is  fine-tuned on **survey-based mental health queries**. It provide
 ---
 ## RESULTS 
 
-  <img src="Results/Screenshot%202025-02-08%20183825.png" alt="Chatbot Interface">
-  <p><b>Figure 1:</b> Evaluation Metrics</p>
+### Model Evaluation
 
+#### Evaluation for Random Forest:
+- **Accuracy:** 0.8095238095238095  
+- **Precision:** 0.7836538461538461  
+- **Recall:** 0.8578947368421053  
+- **F1 Score:** 0.8190954773869347  
+- **ROC-AUC:** 0.8092665173572228  
 
+#### Evaluation for Neural Network:
+- **Accuracy:** 0.7619047619047619  
+- **Precision:** 0.7717391304347826  
+- **Recall:** 0.7473684210526316  
+- **F1 Score:** 0.7593582887700535  
+- **ROC-AUC:** 0.7619820828667414  
 
+  
 
 
 ## Conclusion
