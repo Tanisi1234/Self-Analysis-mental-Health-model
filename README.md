@@ -84,12 +84,12 @@ A sample script (`sample_prediction.py`) is provided to test the model.
    ```
 
 ### **Gradio Tabs:**
-<div align="left">
+<div align="centre">
   <img src="Results/Screenshot%202025-02-07%20131918.png" alt="Prediction Interface">
   <p><b>Figure 1:</b> Prediction Interface</p>
 </div>
 
-<div align="left">
+<div align="centre">
   <img src="Results/Screenshot%202025-02-07%20131949.png" alt="Chatbot Interface">
   <p><b>Figure 2:</b> Chatbot Interface</p>
 </div>
