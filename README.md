@@ -99,5 +99,10 @@ The chatbot is  fine-tuned on **survey-based mental health queries**. It provide
 
 ---
 
+# RESULTS 
+![Prediction Interface](Results/Screenshot 2025-02-07 153653.png)
+![Chatbot Interface](Results/Screenshot 2025-02-08 183825.png)
+
+
 ## Conclusion
 This project demonstrates a robust approach to **mental health prediction and conversational AI**. Future improvements will focus on **reinforcement learning** and **explainability methods** for enhanced interpretability and user trust.
